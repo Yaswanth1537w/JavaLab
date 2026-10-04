@@ -828,6 +828,50 @@ table.acc tr.live th{color:var(--ink)}
 @media (prefers-reduced-motion:reduce){.rv{opacity:1!important;transform:none!important}.topic .tbl.in tr{animation:none}}
 @media print{.rv{opacity:1!important;transform:none!important}}
 
+
+/* ===== touch feedback ===== */
+html{-webkit-tap-highlight-color:transparent}
+a,button,summary,label,input,select,.mrow,.tab,.opt,.plist a,.clist a,.ustrip a{touch-action:manipulation}
+.btn,.tab,.theme-btn,.cbtn,.search-btn,.speed button,.ufilter button,.lchip,.opt,.done-btn,.plist a,.clist a,.ustrip a,.mrow,.gcard,.book,.stp,.cunit>summary,.pix tbody tr,.copy,.x{
+  position:relative;overflow:hidden;-webkit-user-select:none;user-select:none;
+  transition:transform .16s cubic-bezier(.2,.8,.2,1),background .2s,border-color .2s,color .2s,box-shadow .25s}
+/* pressed state */
+.btn:active,.tab:active,.theme-btn:active,.cbtn:active,.search-btn:active,.speed button:active,.ufilter button:active,.lchip:active,.done-btn:active,.copy:active{transform:scale(.94)}
+.opt:active,.plist a:active,.clist a:active,.ustrip a:active,.stp:active,.cunit>summary:active{transform:scale(.985)}
+.mrow:active,.gcard:active,.book:active{transform:scale(.995)}
+.theme-btn:active,.cbtn:active{background:var(--surface2)}
+/* ripple */
+.rip{position:absolute;border-radius:50%;pointer-events:none;transform:scale(0);background:currentColor;opacity:.22;animation:rippleAnim .55s cubic-bezier(.2,.8,.2,1) forwards;mix-blend-mode:normal}
+.btn.primary .rip{background:var(--on-accent);opacity:.35}
+@keyframes rippleAnim{to{transform:scale(2.6);opacity:0}}
+/* don't let mouse-hover styles stick after a tap on touch screens */
+@media (hover:none){
+  .btn:hover,.gcard:hover,.book:hover,.web-res a:hover,.tnode:hover,.best:hover{transform:none;box-shadow:var(--shadow)}
+  .mrow:hover{padding-left:8px}
+  .mrow:hover .go{opacity:0;transform:translate(10px,-50%)}
+  .mrow:hover::before{opacity:0}
+  .mrow:active::before{opacity:1}
+  .mrow:active .go{opacity:1;transform:translate(0,-50%)}
+  .topic .pill:hover,.topic .callout:hover{transform:none;box-shadow:none}
+  .pix tbody tr:hover{background:transparent}
+  .pix tbody tr:active{background:rgb(var(--crema-rgb) / .08)}
+}
+/* bigger, comfier targets on phones */
+@media (max-width:620px){
+  .theme-btn{width:40px;height:40px}
+  .cbtn,.search-btn{min-height:40px}
+  .tab{padding:10px 16px}
+  .ustrip a{padding:9px 15px 9px 10px}
+  .plist a{padding:10px 12px}
+  .clist a{padding:10px 12px}
+  .btn{padding:13px 20px}
+  .btn.sm{padding:9px 15px}
+  .speed button{padding:8px 12px}
+  .opt{padding:13px 14px}
+}
+@media (prefers-reduced-motion:reduce){.rip{display:none}
+  .btn:active,.tab:active,.theme-btn:active,.cbtn:active,.search-btn:active,.opt:active{transform:none}}
+
 </style>
 </head>
 <body style="margin:0">
@@ -2337,6 +2381,27 @@ function animateNotes() {
   els.forEach(e => NOTE_OBS.observe(e));
   setTimeout(() => els.forEach(e => e.classList.add("in")), 2500);   // safety: never leave text hidden
 }
+
+/* ---------- material-style ripple on tap/click ---------- */
+(function () {
+  const SEL = ".btn,.tab,.theme-btn,.cbtn,.search-btn,.speed button,.ufilter button,.lchip,.opt,.done-btn,.plist a,.clist a,.ustrip a,.mrow,.gcard,.stp,.cunit>summary,.copy,.x";
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)");
+  addEventListener("pointerdown", e => {
+    if (reduce.matches) return;
+    const el = e.target.closest(SEL);
+    if (!el || el.disabled) return;
+    const r = el.getBoundingClientRect();
+    const size = Math.max(r.width, r.height);
+    const span = document.createElement("span");
+    span.className = "rip";
+    span.style.width = span.style.height = size + "px";
+    span.style.left = (e.clientX - r.left - size / 2) + "px";
+    span.style.top = (e.clientY - r.top - size / 2) + "px";
+    el.appendChild(span);
+    span.addEventListener("animationend", () => span.remove());
+    setTimeout(() => span.remove(), 900);
+  }, { passive: true });
+})();
 
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
