@@ -779,7 +779,7 @@ table.acc tr.live th{color:var(--ink)}
   </div>
 </nav>
 <main id="app" class="wrap"></main>
-<footer><div class="wrap"><span>24CS202 Object Oriented Programming through Java · D Yaswanth Vishnu (25EU02075), AIML</span><span>Built from the official syllabus · 4 units · 3 credits</span></div></footer>
+<footer><div class="wrap"><span>24CS202 Object Oriented Programming through Java · D Yaswanth Vishnu (25EU02075), AIML</span><span>Built from the official syllabus · 5 units · 3 credits</span></div></footer>
 <div class="toast" id="toast" role="status"></div>
 
 <script>
@@ -1457,7 +1457,8 @@ PROGRAMS["1"].unshift(
 );
 const progsOf = n => PROGRAMS[String(n)] || [];
 let RUN_ID = 0;
-const stopRuns = () => { RUN_ID++; };
+let PROG_OBS = null;
+const stopRuns = () => { RUN_ID++; if (PROG_OBS) { PROG_OBS.disconnect(); PROG_OBS = null; } };
 const CANCEL = {};
 let SPEED = 1;
 try { SPEED = +(localStorage.getItem("jb-speed") || 1); } catch (e) {}
@@ -1490,14 +1491,15 @@ function programDetail(u, p, list) {
   else if (p.kind === "install") body = installHTML();
   else {
     const files = p.files ? Object.entries(p.files) : [[p.main + ".java", p.code]];
-    body = `<div class="stage-card">
+    body = `${files.map(([f, src]) => codeBlock({ file: f, src })).join("")}
+    ${p.cmds ? `<div class="code"><div class="bar"><i></i><i></i><i></i><span class="fn">Commands (Windows)</span></div><pre><code>${p.cmds.map(c => "C:\\lab&gt; " + esc(c)).join("\n")}</code></pre></div>` : ""}
+    <div class="stage-card">
       <div class="stage-top"><span class="ttl">Live run · ${esc(p.main)}</span>
         <div class="sp"><div class="speed" role="group" aria-label="Speed">${[[1, "1×"], [2, "2×"], [9, "Skip"]].map(([v, l]) => `<button type="button" data-speed="${v}" class="${SPEED === v ? "on" : ""}">${l}</button>`).join("")}</div>
-        <button class="btn primary sm" type="button" id="runBtn">▶ Run again</button></div></div>
+        <button class="btn primary sm" type="button" id="runBtn">▶ Run</button></div></div>
       <div class="stage-body"><div class="scene" id="scene"></div><div class="term" id="term" aria-live="polite"></div></div>
     </div>
-    ${files.map(([f, src]) => codeBlock({ file: f, src })).join("")}
-    ${p.cmds ? `<div class="code"><div class="bar"><i></i><i></i><i></i><span class="fn">Commands (Windows)</span></div><pre><code>${p.cmds.map(c => "C:\\lab&gt; " + esc(c)).join("\n")}</code></pre></div>` : ""}`;
+`;
   }
   return `${head}${fix}${note}${body}
     <div class="unit-nav">${prev ? `<a class="btn" href="#/unit/${u.n}/programs/${prev.id}">← ${esc(prev.title)}</a>` : "<span></span>"}${next ? `<a class="btn primary" href="#/unit/${u.n}/programs/${next.id}">${esc(next.title)} →</a>` : ""}</div>`;
@@ -1514,7 +1516,15 @@ function mountProgram(u, pid) {
     $$("[data-speed]").forEach(x => x.classList.toggle("on", x === b));
   });
   $("#runBtn").onclick = () => runProgram(p);
-  runProgram(p);
+  const card = $(".stage-card");
+  if (card) {
+    if (PROG_OBS) PROG_OBS.disconnect();
+    let fired = false;
+    PROG_OBS = new IntersectionObserver(es => {
+      if (!fired && es.some(e => e.isIntersecting)) { fired = true; PROG_OBS.disconnect(); runProgram(p); }
+    }, { rootMargin: "0px 0px -15% 0px", threshold: 0.25 });
+    PROG_OBS.observe(card);
+  }
 }
 
 /* ---------- runner ---------- */
@@ -2214,9 +2224,8 @@ function renderHome() {
 
 <section class="block" id="books">
   <div class="sec-head"><div><div class="eyebrow">The shelf</div><h2>Books & resources</h2></div>
-  <p>The text book the syllabus follows, five references, and four online courses.</p></div>
+  <p>The text book the syllabus follows, and five reference books.</p></div>
   <div class="shelf">${BOOKS.map(b => `<div class="book" style="--spine:${b.c}"><span class="tag">${b.tag}</span><h4>${b.t}</h4><p>${b.a}</p></div>`).join("")}</div>
-  <div class="web-res">${WEB.map(w => `<a href="${w.u}" target="_blank" rel="noopener"><span>${w.src} ↗</span>${w.t}</a>`).join("")}</div>
 </section>`;
 }
 
