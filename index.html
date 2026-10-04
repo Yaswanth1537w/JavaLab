@@ -739,6 +739,95 @@ table.acc tr.live th{color:var(--ink)}
 @media (max-width:520px){.clogo{width:26px;height:26px}}
 
 @media (max-width:520px){.nav .wrap{gap:10px}.nav-links{gap:2px}.nav-links a[data-nav="units"]{display:none}.search-btn{padding:6px 10px}.search-btn kbd{display:none}}
+
+/* ===== program index table ===== */
+.pix-top{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:18px}
+.pix-top .field input{width:220px}
+.ufilter{display:flex;gap:6px;flex-wrap:wrap}
+.ufilter button{font:600 12.5px var(--mono);padding:6px 13px;border-radius:99px;border:1px solid var(--line2);background:var(--surface);color:var(--muted);cursor:pointer;transition:.2s}
+.ufilter button:hover{color:var(--ink)}
+.ufilter button.on{background:color-mix(in srgb,var(--u,var(--crema)) 14%,var(--surface));border-color:var(--u,var(--crema));color:var(--ink)}
+.pix{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--surface);box-shadow:var(--shadow)}
+.pix table{border-collapse:collapse;width:100%;font-size:14px}
+.pix thead th{background:var(--surface2);text-align:left;font:600 11.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--faint);padding:11px 14px;cursor:pointer;white-space:nowrap;z-index:5}
+.pix thead th:hover{color:var(--ink)}
+.pix thead th .ar{opacity:.35;font-size:10px}
+.pix thead th.sorted .ar{opacity:1;color:var(--crema)}
+.pix td{padding:10px 14px;border-top:1px solid var(--line);vertical-align:middle}
+.pix tbody tr{transition:background .18s}
+.pix tbody tr:hover{background:rgb(var(--crema-rgb) / .05)}
+.pix .un{font:700 11px var(--mono);color:#fff;background:var(--u);border-radius:99px;padding:3px 9px;display:inline-block;min-width:34px;text-align:center}
+.pix .ttl a{color:var(--ink);text-decoration:none;font-weight:600}
+.pix .ttl a:hover{color:var(--crema)}
+.pix .ttl small{display:block;color:var(--faint);font:11px var(--mono);margin-top:2px}
+.pix .co{font:600 12px var(--mono);color:var(--byte)}
+.pix .st{font:600 10.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:99px;white-space:nowrap}
+.pix-empty{padding:26px;text-align:center;color:var(--faint)}
+.pixcount{font:12px var(--mono);color:var(--faint);margin-left:auto}
+@media (max-width:760px){.pix td:nth-child(4),.pix th:nth-child(4){display:none}}
+
+/* ===== printable lab record ===== */
+.rectools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:20px;padding:14px 16px;border:1px dashed var(--line2);border-radius:14px;background:var(--surface)}
+.rectools p{margin:0;font-size:13.5px;color:var(--muted);max-width:60ch}
+.record{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:0;overflow:hidden}
+.sheet{padding:34px 38px;border-bottom:1px solid var(--line)}
+@media (max-width:620px){.sheet{padding:22px 18px}}
+.cover{text-align:center}
+.cover img.logo{width:92px;height:92px;border-radius:50%;background:#fff;object-fit:contain;padding:3px;border:1px solid var(--line2)}
+.cover h1{font-size:clamp(22px,3.4vw,32px);font-weight:800;letter-spacing:-.02em;margin:14px 0 2px}
+.cover .vj{font:12px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
+.cover .rule{height:2px;background:linear-gradient(90deg,transparent,var(--crema),var(--byte),transparent);margin:18px auto;max-width:520px}
+.cover h2{font-size:clamp(18px,2.6vw,25px);font-weight:800;margin:6px 0 4px}
+.cover .code2{font:600 14px var(--mono);letter-spacing:.14em;color:var(--crema)}
+.cover .kind{font:12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-top:4px}
+.cover table{margin:26px auto 0;border-collapse:collapse;font-size:15px;text-align:left;max-width:460px;width:100%}
+.cover table td{padding:7px 10px;border-bottom:1px dashed var(--line)}
+.cover table td:first-child{font:600 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--faint);white-space:nowrap}
+.sigrow{display:flex;justify-content:space-between;gap:30px;margin-top:46px;font:12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.sigrow div{flex:1;border-top:1px solid var(--line2);padding-top:7px;text-align:center}
+.idxtable{width:100%;border-collapse:collapse;font-size:13.5px}
+.idxtable th{text-align:left;font:600 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--faint);padding:8px 10px;border-bottom:1px solid var(--line2)}
+.idxtable td{padding:7px 10px;border-bottom:1px solid var(--line)}
+.idxtable td:first-child{font-family:var(--mono);width:52px;color:var(--muted)}
+.idxtable td.sig{width:92px}
+.idxtable tr.uh td{background:var(--surface2);font:600 11.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--crema)}
+.exp h3{font-size:19px;font-weight:800;margin:0 0 4px;letter-spacing:-.01em}
+.exp .expno{font:11.5px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--byte)}
+.exp .aim{margin:10px 0 14px;font-size:14.5px;color:var(--ink2)}
+.exp .aim b,.exp .outb b{display:block;font:600 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-bottom:3px}
+.exp pre.src{margin:0 0 14px;background:var(--code-bg);color:var(--code-ink);border-radius:10px;padding:14px 16px;font:12.5px/1.6 var(--mono);overflow-x:auto;white-space:pre-wrap}
+.exp .outb{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--surface2);font:12.5px/1.6 var(--mono);white-space:pre-wrap;overflow-x:auto}
+.exp .fileline{font:11.5px var(--mono);color:var(--faint);margin:0 0 6px}
+
+@media print{
+  .rectools,.idbar,.ustrip{display:none!important}
+  .record{border:0;border-radius:0;background:#fff}
+  .sheet{padding:0 0 18px;border-bottom:0;break-inside:avoid}
+  .cover{break-after:page;padding-top:40px}
+  .sheet.idx{break-after:page}
+  .exp{break-inside:avoid;break-after:page;padding-top:6px}
+  .exp pre.src{background:#fff;color:#000;border:1px solid #bbb;font-size:11px;white-space:pre-wrap}
+  .exp .outb{background:#fff;border:1px solid #bbb;font-size:11px}
+  .cover img.logo{border:1px solid #999}
+  @page{margin:16mm 14mm}
+}
+
+
+/* notes motion */
+.rv{opacity:.001;transform:translateY(13px);transition:opacity .55s ease-out,transform .55s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+.topic .tbl.in tr{animation:rowin .45s cubic-bezier(.2,.8,.2,1) both}
+@keyframes rowin{from{opacity:0;transform:translateX(-10px)}}
+.topic .tbl tr:not(:first-child):hover td{background:rgb(var(--crema-rgb) / .06)}
+.topic .callout{transition:transform .3s,box-shadow .3s}
+.topic .callout:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.topic .pill{transition:transform .2s,border-color .2s,color .2s}
+.topic .pill:hover{transform:translateY(-2px);border-color:var(--ua,var(--crema));color:var(--ink)}
+.prose h4{position:relative;padding-left:14px}
+.prose h4::before{content:"";position:absolute;left:0;top:.42em;width:6px;height:6px;border-radius:50%;background:var(--ua,var(--crema))}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1!important;transform:none!important}.topic .tbl.in tr{animation:none}}
+@media print{.rv{opacity:1!important;transform:none!important}}
+
 </style>
 </head>
 <body style="margin:0">
@@ -771,6 +860,8 @@ table.acc tr.live th{color:var(--ink)}
       <a href="#/" data-nav="home" class="hide-sm">Home</a>
       <a href="#/units" data-nav="units">Units</a>
       <a href="#/outcomes" data-nav="outcomes" class="hide-sm">Outcomes</a>
+      <a href="#/programs" data-nav="programs" class="hide-sm">Programs</a>
+      <a href="#/record" data-nav="record" class="hide-sm">Record</a>
       <a href="#/books" data-nav="books" class="hide-sm">Books</a>
       <button class="cbtn" id="openContents" type="button" aria-label="Open contents"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span>Contents</span></button>
       <button class="theme-btn" id="themeBtn" type="button" aria-label="Switch light or dark theme"><svg class="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
@@ -2075,7 +2166,9 @@ function openContents() {
             <a href="#/unit/${u.n}/quiz" class="${isCur && r.tab === "quiz" ? "on" : ""}"><span class="dotm"></span>Quiz · ${u.quiz.length} questions</a>
           </div></details>`;
       }).join("")}
-      <a class="clist" href="#/books" style="--u:var(--byte);margin:6px 0 0;border:0;padding:8px 12px"><span class="dotm"></span>Books &amp; resources</a>
+      <a class="clist" href="#/programs" style="--u:var(--crema);margin:6px 0 0;border:0;padding:8px 12px"><span class="dotm"></span>Program index &mdash; every experiment</a>
+      <a class="clist" href="#/record" style="--u:var(--violet);margin:0;border:0;padding:8px 12px"><span class="dotm"></span>Lab record (printable)</a>
+      <a class="clist" href="#/books" style="--u:var(--byte);margin:0 0 6px;border:0;padding:8px 12px"><span class="dotm"></span>Books &amp; resources</a>
     </div>
     <div class="cfoot"><span>Press <kbd>C</kbd> for contents</span><span><kbd>Ctrl K</kbd> to search</span></div>
   </div>`;
@@ -2093,6 +2186,157 @@ addEventListener("keydown", e => {
     e.preventDefault(); $(".cdrop") ? $(".cdrop").remove() : openContents();
   }
 });
+
+/* ---------- shared: every lab program, flattened ---------- */
+const STUDENT = { name: "D Yaswanth Vishnu", roll: "25EU02075", cls: "AIML-2", faculty: "M Ramesh" };
+function allPrograms() {
+  const out = [];
+  UNITS.forEach(u => progsOf(u.n).forEach((p, i) => out.push({ ...p, unit: u, no: i + 1 })));
+  return out;
+}
+const STATUS_LABEL = { fixed: "Fixed", improved: "Improved", ok: "Verified", new: "New", session: "Lab session" };
+
+/* ---------- program index ---------- */
+let pixSort = { key: "unit", dir: 1 };
+function renderIndex() {
+  const rows = allPrograms();
+  return `
+  <section class="block" style="padding-top:34px">
+    <div class="sec-head"><div><div class="eyebrow">Every experiment in one place</div><h2>Program index</h2></div>
+    <p>All 81 lab programs plus the two lab sessions, across Units I–IV, with the course outcome each one serves. Click a title to open it.</p></div>
+    <div class="pix-top">
+      <div class="ufilter" id="ufil">
+        <button data-u="0" class="on" style="--u:var(--crema)">All units</button>
+        ${UNITS.filter(u => progsOf(u.n).length).map(u => `<button data-u="${u.n}" style="--u:${u.accent}">Unit ${ROMAN[u.n]}</button>`).join("")}
+      </div>
+      <label class="field" style="flex-direction:row;align-items:center;gap:8px">Find <input id="pixq" placeholder="thread, file, interface…"></label>
+      <span class="pixcount" id="pixcount"></span>
+      <a class="btn sm" href="#/record">Open lab record →</a>
+    </div>
+    <div class="pix"><table>
+      <thead><tr>
+        <th data-k="unit">Unit <span class="ar">▲</span></th>
+        <th data-k="no">Exp <span class="ar">▲</span></th>
+        <th data-k="title">Program <span class="ar">▲</span></th>
+        <th data-k="co">CO <span class="ar">▲</span></th>
+        <th data-k="status">Status <span class="ar">▲</span></th>
+      </tr></thead>
+      <tbody id="pixbody"></tbody>
+    </table><div class="pix-empty" id="pixempty" hidden>No program matches that search.</div></div>
+  </section>`;
+}
+function mountIndex() {
+  const rows = allPrograms();
+  const draw = () => {
+    const q = ($("#pixq").value || "").trim().toLowerCase();
+    const uf = +($(".ufilter button.on")?.dataset.u || 0);
+    const view = rows.filter(r => (!uf || r.unit.n === uf) &&
+      (!q || (r.title + " " + r.task + " " + (r.main || "") + " " + r.group).toLowerCase().includes(q)));
+    const k = pixSort.key, d = pixSort.dir;
+    view.sort((a, b) => {
+      const va = k === "unit" ? a.unit.n : k === "no" ? a.unit.n * 100 + a.no : k === "co" ? a.unit.co : (a[k] || "");
+      const vb = k === "unit" ? b.unit.n : k === "no" ? b.unit.n * 100 + b.no : k === "co" ? b.unit.co : (b[k] || "");
+      return (va > vb ? 1 : va < vb ? -1 : 0) * d;
+    });
+    $("#pixbody").innerHTML = view.map(r => `<tr>
+      <td><span class="un" style="--u:${r.unit.accent}">${ROMAN[r.unit.n]}</span></td>
+      <td style="font-family:var(--mono);color:var(--muted)">${r.no}</td>
+      <td class="ttl"><a href="#/unit/${r.unit.n}/programs/${r.id}">${esc(r.title)}</a><small>${esc(r.group)}${r.main ? " · " + esc(r.main) + ".java" : ""}</small></td>
+      <td class="co">${r.unit.co}</td>
+      <td><span class="st badge ${r.status}">${STATUS_LABEL[r.status]}</span></td></tr>`).join("");
+    $("#pixempty").hidden = view.length > 0;
+    $("#pixcount").textContent = `${view.length} of ${rows.length} programs`;
+    $$(".pix thead th").forEach(th => {
+      th.classList.toggle("sorted", th.dataset.k === k);
+      $(".ar", th).textContent = th.dataset.k === k ? (d > 0 ? "▲" : "▼") : "▲";
+    });
+  };
+  $$(".ufilter button").forEach(b => b.onclick = () => {
+    $$(".ufilter button").forEach(x => x.classList.toggle("on", x === b)); draw();
+  });
+  $$(".pix thead th").forEach(th => th.onclick = () => {
+    const k = th.dataset.k;
+    pixSort = { key: k, dir: pixSort.key === k ? -pixSort.dir : 1 };
+    draw();
+  });
+  $("#pixq").oninput = draw;
+  draw();
+}
+
+/* ---------- printable lab record ---------- */
+function renderRecord() {
+  const rows = allPrograms();
+  const logo = $(".clogo")?.src || "";
+  let n = 0;
+  const idxRows = UNITS.filter(u => progsOf(u.n).length).map(u => {
+    const head = `<tr class="uh"><td colspan="4">Unit ${ROMAN[u.n]} · ${esc(u.title)}</td></tr>`;
+    const items = progsOf(u.n).map(p => { n++; return `<tr><td>${n}</td><td>${esc(p.title)}</td><td></td><td class="sig"></td></tr>`; }).join("");
+    return head + items;
+  }).join("");
+  let k = 0;
+  const sheets = rows.map(r => {
+    k++;
+    const files = r.files ? Object.entries(r.files) : (r.code ? [[(r.main || "Program") + ".java", r.code]] : []);
+    return `<section class="sheet exp">
+      <div class="expno">Experiment ${k} · Unit ${ROMAN[r.unit.n]} · ${esc(r.exp || r.group)}</div>
+      <h3>${esc(r.title)}</h3>
+      <div class="aim"><b>Aim</b>${r.task}</div>
+      ${files.map(([f, src]) => `<p class="fileline">${esc(f)}</p><pre class="src">${esc(src)}</pre>`).join("")}
+      ${r.cmds ? `<p class="fileline">Commands</p><pre class="src">${r.cmds.map(c => "C:\\lab&gt; " + esc(c)).join("\n")}</pre>` : ""}
+      ${r.out ? `<div class="outb"><b>Output</b>${esc(r.out.replace(/⟦|⟧/g, ""))}</div>` : `<div class="outb"><b>Observation</b>${esc(r.kind === "compare" ? "Comparative study prepared for Java, C, C++, Python and JavaScript on 20 parameters, with a conclusion." : "JDK installed and configured on Windows; java and javac verified; Hello World compiled and executed.")}</div>`}
+    </section>`;
+  }).join("");
+  return `
+  <div class="rectools">
+    <p><strong>Lab record.</strong> Cover page, index of experiments and every program with its aim, source and real output. Print it (Ctrl + P) and choose <em>Save as PDF</em> — one experiment per page, with a signature column in the index.</p>
+    <button class="btn primary sm" type="button" onclick="window.print()" style="margin-left:auto">Print / Save as PDF</button>
+    <a class="btn sm" href="#/programs">Program index</a>
+  </div>
+  <div class="record">
+    <section class="sheet cover">
+      ${logo ? `<img class="logo" src="${logo}" alt="College emblem">` : ""}
+      <h1>Siddhartha Academy of Higher Education</h1>
+      <div class="vj">Vijayawada</div>
+      <div class="rule"></div>
+      <div class="code2">24CS202</div>
+      <h2>Object Oriented Programming through Java</h2>
+      <div class="kind">Laboratory record · ${rows.length} experiments</div>
+      <table>
+        <tr><td>Name</td><td>${STUDENT.name}</td></tr>
+        <tr><td>Roll No</td><td>${STUDENT.roll}</td></tr>
+        <tr><td>Class</td><td>${STUDENT.cls}</td></tr>
+        <tr><td>Faculty</td><td>${STUDENT.faculty}</td></tr>
+        <tr><td>Academic year</td><td>2026 – 2027</td></tr>
+      </table>
+      <div class="sigrow"><div>Student signature</div><div>Faculty signature</div><div>Head of department</div></div>
+    </section>
+    <section class="sheet idx">
+      <h3 style="margin:0 0 14px;font-size:20px;font-weight:800">Index of experiments</h3>
+      <table class="idxtable"><thead><tr><th>No</th><th>Experiment</th><th>Date</th><th>Signature</th></tr></thead>
+      <tbody>${idxRows}</tbody></table>
+    </section>
+    ${sheets}
+  </div>`;
+}
+
+/* ---------- notes: gentle reveal on scroll ---------- */
+let NOTE_OBS = null;
+function animateNotes() {
+  if (NOTE_OBS) { NOTE_OBS.disconnect(); NOTE_OBS = null; }
+  if (REDUCED || !("IntersectionObserver" in window)) return;
+  const els = $$(".topic h2, .topic .pills, .topic .prose > p, .topic .prose > h4, .topic .prose > ul, .topic .tbl, .topic .callout, .topic .code, .topic .done-btn");
+  if (!els.length) return;
+  els.forEach(e => e.classList.add("rv"));
+  const show = el => {
+    el.classList.add("in");
+    if (el.classList.contains("tbl")) $$("tr", el).forEach((tr, i) => { tr.style.animationDelay = (i * 55) + "ms"; });
+  };
+  NOTE_OBS = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { show(e.target); NOTE_OBS.unobserve(e.target); } });
+  }, { rootMargin: "0px 0px -6% 0px", threshold: 0.06 });
+  els.forEach(e => NOTE_OBS.observe(e));
+  setTimeout(() => els.forEach(e => e.classList.add("in")), 2500);   // safety: never leave text hidden
+}
 
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -2590,6 +2834,9 @@ UNITS.forEach(u => {
   INDEX.push({ label: `Playground — Unit ${ROMAN[u.n]}`, where: u.short, href: `#/unit/${u.n}/lab`, key: ("lab interactive " + u.short).toLowerCase() });
   INDEX.push({ label: `Quiz — Unit ${ROMAN[u.n]}`, where: u.short, href: `#/unit/${u.n}/quiz`, key: ("quiz test mcq " + u.short).toLowerCase() });
 });
+INDEX.push({ label: "Program index — all lab programs", where: "Reference", href: "#/programs", key: "program index all programs table list" });
+INDEX.push({ label: "Lab record (printable)", where: "Reference", href: "#/record", key: "lab record print pdf submission aim program output index signature" });
+
 function openPalette() {
   if ($(".pal-back")) return;
   const back = document.createElement("div"); back.className = "pal-back";
@@ -2643,6 +2890,7 @@ function route() {
     if (tab === "quiz") mountQuiz(u);
     if (tab === "programs") mountProgram(u, parts[3]);
     if (tab === "notes") {
+      animateNotes();
       tocObs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) $$(".toc a").forEach(a => a.classList.toggle("on", a.dataset.toc === e.target.id)); }), { rootMargin: "-40% 0px -55% 0px" });
       $$(".topic").forEach(t => tocObs.observe(t));
     }
@@ -2651,6 +2899,13 @@ function route() {
     else if (tab === "programs" && key === lastKey) { const pd = $("#pd"); if (pd && pd.getBoundingClientRect().top < 0) scrollTo({ top: pd.getBoundingClientRect().top + scrollY - 150 }); }
     else scrollTo({ top: 0 });
     lastKey = key;
+  } else if (parts[0] === "programs" || parts[0] === "record") {
+    lastKey = "";
+    app.innerHTML = parts[0] === "programs" ? renderIndex() : renderRecord();
+    document.title = (parts[0] === "programs" ? "Program index" : "Lab record") + " · 24CS202";
+    $(`[data-nav="${parts[0]}"]`)?.classList.add("on");
+    if (parts[0] === "programs") mountIndex();
+    scrollTo({ top: 0 });
   } else {
     lastKey = "";
     app.innerHTML = renderHome();
