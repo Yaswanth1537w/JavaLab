@@ -872,6 +872,36 @@ a,button,summary,label,input,select,.mrow,.tab,.opt,.plist a,.clist a,.ustrip a{
 @media (prefers-reduced-motion:reduce){.rip{display:none}
   .btn:active,.tab:active,.theme-btn:active,.cbtn:active,.search-btn:active,.opt:active{transform:none}}
 
+
+/* ===== mobile layout fixes ===== */
+@media (max-width:900px){
+  .unit-body .toc{display:none!important}
+  .unit-body{grid-template-columns:minmax(0,1fr)!important;gap:0}
+}
+/* sticky bars must be opaque, never let text show through */
+.tabs{background:var(--ground);box-shadow:0 10px 12px -12px rgb(var(--ink-rgb) / .35);border-bottom:1px solid var(--line);margin-bottom:6px}
+.pix thead th{box-shadow:none}
+@media (max-width:900px){
+  .tabs{padding-block:12px;margin-inline:-20px;padding-inline:20px}
+  .ustrip{margin-inline:-20px;padding-inline:20px}
+  .topic{scroll-margin-top:130px}
+}
+/* the programs list on phones: keep the row of chips from colliding with the detail */
+@media (max-width:960px){
+  .plist{margin-bottom:16px;padding-block:4px}
+  .prog-wrap{gap:10px}
+}
+
+/* nav must be opaque even where backdrop-blur is unsupported */
+.nav{background:var(--ground)}
+.nav{box-shadow:0 10px 14px -14px rgb(var(--ink-rgb) / .4)}
+/* hint that wide tables scroll sideways on phones */
+@media (max-width:760px){
+  .tbl{position:relative}
+  .tbl::after{content:"";position:absolute;top:1px;right:1px;bottom:1px;width:30px;border-radius:0 12px 12px 0;
+    background:linear-gradient(90deg,transparent,var(--ground));pointer-events:none}
+  .tbl table{min-width:420px}
+}
 </style>
 </head>
 <body style="margin:0">
